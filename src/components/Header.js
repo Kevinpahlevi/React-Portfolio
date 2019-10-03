@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 export default class Header extends Component {
   render() {
@@ -7,6 +8,7 @@ export default class Header extends Component {
       
       <header id="home">
          <nav id="nav-wrap">
+           <p>LINGKUNGAN : {process.env.text}</p>
             <a className="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
           <a className="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
             <ul id="nav" className="nav">
