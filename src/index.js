@@ -7,7 +7,7 @@ import { initializeFirebase } from './push'
 
 serviceWorker()
 
-// initializeFirebase()
+initializeFirebase()
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
