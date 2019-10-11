@@ -3,6 +3,19 @@ import React, { Component } from 'react';
 import {ask } from '../push'
 
 export default class Header extends Component {
+
+  state = {
+    hasil: 'generate token here'
+}
+
+  async asktoken(){
+    console.log('get token')
+    const token = await ask()
+    console.log(token);
+    this.setState({hasil: token})
+    
+  }
+
   render() {
     let resumeData = this.props.resumeData;
     return (
@@ -25,7 +38,9 @@ export default class Header extends Component {
 
          <div className="row banner">
             <div className="banner-text">
-        <button onClick={ask}>TOKEN</button>
+        {/* <input type="text" value={this.state.hasil} style={{minWidth: '50%'}}/> */}
+        <textarea value={this.state.hasil}></textarea>
+        <button onClick={this.asktoken.bind(this)}>TOKEN</button>
 
                <h1 className="responsive-headline">I am {resumeData.name}.</h1>
                <h3 style={{color:'#fff', fontFamily:'sans-serif '}}>I am a {resumeData.role}.{resumeData.roleDescription}

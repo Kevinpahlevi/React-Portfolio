@@ -5,7 +5,7 @@ import App from './App';
 import serviceWorker from './serviceWorker';
 import { initializeFirebase } from './push'
 
-serviceWorker()
+// serviceWorker()
 
 initializeFirebase()
 

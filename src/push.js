@@ -31,7 +31,6 @@ export const initializeFirebase = () => {
         messaging.useServiceWorker(registration);
     });
   }
-
   // navigator.serviceWorker
   //   .register('/firebase-messaging-sw.js')
   //   .then((registration) => {
@@ -45,7 +44,8 @@ export const ask = async () => {
     await messaging.requestPermission();
     const token = await messaging.getToken();
     console.log("token",token);
-    
+    return token
+
   } catch (error) {
     console.error(error);
   }
