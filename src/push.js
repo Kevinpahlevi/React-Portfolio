@@ -36,6 +36,11 @@ export const initializeFirebase = () => {
   //   .then((registration) => {
   //     firebase.messaging().useServiceWorker(registration);
   //   });
+
+  messaging.onMessage((payload) => {
+    console.log('Message received. ', payload);
+    // ...
+  });
 }
 
 export const ask = async () => {
