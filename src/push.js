@@ -1,7 +1,11 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import '@firebase/messaging';
-export const initializeFirebase = () => {
 
+let messaging;
+
+export const initializeFirebase = () => {
+  console.log("init sw-js");
+  
   var firebaseConfig = {
     apiKey: "AIzaSyDzmM9Fm1YpKnV2Uya-PHnqSNmDRyR2gG0",
     authDomain: "test-project-8dc3c.firebaseapp.com",
@@ -15,7 +19,6 @@ export const initializeFirebase = () => {
   firebase.initializeApp(firebaseConfig);
 
   
-  let messaging;
   if(firebase.messaging.isSupported()) {
     console.log('supported')
     messaging = firebase.messaging();
@@ -36,12 +39,28 @@ export const initializeFirebase = () => {
   //   .then((registration) => {
   //     firebase.messaging().useServiceWorker(registration);
   //   });
+  // messaging.onMessage((payload) => {
+  //   console.log("ada pesan");
+  //   console.log('Message received. ', payload);
+  //   // ...
+  // });
 
 }
 
+export const showMessage = () => {
+  console.log("onmessage");
+  try {
+    messaging.onMessage((payload) => {
+    console.log(payload);
+    })
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+
 export const ask = async () => {
   try {
-    const messaging = firebase.messaging();
     await messaging.requestPermission();
     const token = await messaging.getToken();
     console.log("token",token);

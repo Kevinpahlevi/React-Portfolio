@@ -16,8 +16,16 @@ export default class Header extends Component {
     
   }
 
+  copy() {
+    var copyText = document.getElementById("myInput");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    // alert("Copied the text: " + copyText.value);
+  }
+
   render() {
-    let resumeData = this.props.resumeData;
+    // let resumeData = this.props.resumeData;
     return (
       <React.Fragment>
       
@@ -40,7 +48,7 @@ export default class Header extends Component {
             <div className="banner-text" style={{ display: "flex", justifyContent: "center", flexDirection: "column"}}>
               <h2 style={{ color: "white"}}>FIREBASE TOKEN</h2>
         {/* <input type="text" value={this.state.hasil} style={{minWidth: '50%'}}/> */}
-       <div><textarea value={this.state.hasil} style={{ width: "100%"}}></textarea></div>
+       <div><textarea value={this.state.hasil} style={{ width: "100%"}} readOnly id="myInput" onClick={()=>this.copy()}></textarea></div>
        <div><button onClick={this.asktoken.bind(this)}>GET TOKEN</button></div>
 
                {/* <h1 className="responsive-headline">I am {resumeData.name}.</h1>

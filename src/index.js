@@ -2,12 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import serviceWorker from './serviceWorker';
-import { initializeFirebase } from './push'
+// import serviceWorker from './serviceWorker';
+import { initializeFirebase, showMessage } from './push'
 
 // serviceWorker()
+async function init() {
+ await initializeFirebase()
+ await showMessage()
+}
 
-initializeFirebase()
+init()
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
